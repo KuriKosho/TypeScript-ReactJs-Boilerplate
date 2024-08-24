@@ -1,6 +1,6 @@
 [
     {
-      "path": "/",
+      "path": "/home",
       "component": "Home",
       "type": "public"
     },

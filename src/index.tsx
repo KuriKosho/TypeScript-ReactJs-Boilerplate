@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { ThemeContext } from './context/ThemeContext';
+import ThemeContextProvider, { ThemeContext } from './context/ThemeContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,9 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ThemeContext.Provider value={ThemeContext}>
+      <ThemeContextProvider>
         <App />
-      </ThemeContext.Provider>
+      </ThemeContextProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

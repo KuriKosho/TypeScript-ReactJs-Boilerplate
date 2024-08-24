@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../../../context/ThemeContext';
 
 const HomePage = () => {
+  const theme = useContext(ThemeContext);
+  const clickHandler = () => {
+    theme.toggleTheme();
+  }
   return (
     <div>
-      HomePage
       <div className="container">
         <div>
-          <img src="" alt="" />
-          <p></p>
+          <p onClick={()=> clickHandler()}>
+          HomePage
+          </p>
         </div>
       </div>
     </div>
