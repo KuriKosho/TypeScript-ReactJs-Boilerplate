@@ -1,0 +1,23 @@
+[
+    {
+      "path": "/",
+      "component": "Home",
+      "type": "public"
+    },
+    {
+      "path": "/login",
+      "component": "Login",
+      "type": "public"
+    },
+    {
+      "path": "/dashboard",
+      "component": "Dashboard",
+      "type": "private"
+    },
+    {
+      "path": "/profile",
+      "component": "Profile",
+      "type": "private"
+    }
+  ]
+
