@@ -1,30 +1,26 @@
-import React, { useEffect, useState, lazy, useContext } from 'react';
+import React, { useEffect, useState, lazy } from 'react';
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import PrivateRoute from './components/PrivateRoute';
-import PublicRoute from './components/PublicRoute';
-import axiosInstance from './config/axios/ConfigAxios';
-import fake_route from './api/FAKE_DATA.json'
-import { ThemeContext } from './context/ThemeContext';
-const HomePage = lazy(() => import('./container/pages/HomePage'));
-const LoginPage = lazy(() => import('./container/pages/LoginPage'));
-const LoadingPage = lazy(() => import('./container/pages/LoadingPage'));
+import { Route, Routes } from 'react-router-dom';
+import PrivateRoute from '@components/PrivateRoute';
+import PublicRoute from '@components/PublicRoute';
+import fake_route from '@api/FAKE_DATA.json'
+const HomePage = lazy(() => import('@containers/pages/HomePage'));
+const LoginPage = lazy(() => import('@containers/pages/LoginPage'));
+const LoadingPage = lazy(() => import('@containers/pages/LoadingPage'));
 // Define a route type for better type safety
 type RouteType = {
   path: string;
   component: string;
-  type: string|'private' | 'public';
+  type: 'private' | 'public' | string;
 }
 
 function App() {
   const [routes, setRoutes] = useState<RouteType[]>([]);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const theme = useContext(ThemeContext);
   // useContext(ThemeContext);
   useEffect(() => {
     // Fetch routes from server
-    setRoutes(fake_route);
-    console.log(theme.theme);
+    // setRoutes(fake_route);
     // axiosInstance.get('/api/routes')
       // .then(response => setRoutes(response.data.routes))
       // .catch(error => console.error('Error fetching routes:', error));
@@ -43,12 +39,11 @@ function App() {
   };
 
   return (
-    <div className='App' >
+    <div className='App'>
       {routes ? <Routes>
         {routes.map((route, index) => {
             const element = mapComponent(route.component);
             if (!element) return null;
-
             return route.type === 'private' ? (
               <Route
                 key={index}
@@ -68,30 +63,6 @@ function App() {
             );
           })}
       </Routes> : <LoadingPage />}
-      {/* <Routes>
-          {routes.map((route, index) => {
-            const element = mapComponent(route.component);
-            if (!element) return null;
-
-            return route.type === 'private' ? (
-              <Route
-                key={index}
-                path={route.path}
-                element={<PrivateRoute isAuthenticated={isAuthenticated} />}
-              >
-                <Route path={route.path} element={element} />
-              </Route>
-            ) : (
-              <Route
-                key={index}
-                path={route.path}
-                element={<PublicRoute />}
-              >
-                <Route path={route.path} element={element} />
-              </Route>
-            );
-          })}
-      </Routes> */}
       </div>
   );
 }

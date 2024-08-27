@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './font-size.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import ThemeContextProvider, { ThemeContext } from './context/ThemeContext';
+import "../src/i18n/i18n";
+import { store } from '../src/redux/store/store';
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,9 +15,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ThemeContextProvider>
-        <App />
-      </ThemeContextProvider>
+      <Provider store={store}>
+          <App />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );

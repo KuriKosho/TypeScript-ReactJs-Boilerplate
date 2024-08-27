@@ -1,10 +1,8 @@
 import React, { useContext } from 'react'
-import { ThemeContext } from '../../../context/ThemeContext';
 
 const HomePage = () => {
-  const theme = useContext(ThemeContext);
   const clickHandler = () => {
-    theme.toggleTheme();
+    console.log('click')
   }
   return (
     <div>

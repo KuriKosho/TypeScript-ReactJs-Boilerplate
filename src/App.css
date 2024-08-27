@@ -1,12 +1,12 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 .light {
-  background-color: white;
+  background-color: #F1F1F1;
   color: black;
 }
 .dark {
-  background-color: black;
+  background-color: rgb(58, 58, 58);
   color: white;
 }
 .App-logo {
@@ -42,4 +42,23 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.btn-mode {
+  display: flex;
+  border: none !important;
+  border-radius: 50px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+}
+.btn-mode-light {
+  background-color: #0095E9;
+  color: white;
+}
+.btn-mode-dark {
+  background-color: #282c34;
+  color: white;
 }
