@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '@redux/store/store';
-import { toggleTheme } from '@redux/theme/themeSlice';
-import { useThemeClass } from '@hooks/useThemeClass';
+import { AppDispatch, RootState } from '../redux/store/store';
+import { toggleTheme } from '../redux/theme/themeSlice';
+import { useThemeClass } from '../hooks/useThemeClass';
 import "../App.css";
 const ThemeToggle: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

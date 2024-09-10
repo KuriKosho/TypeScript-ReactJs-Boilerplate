@@ -1,7 +1,5 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import classes from '../css/styles.module.css'
-import NavHeader from './NavHeader'
 
 interface WatermarkProps {
   content: string | React.ReactNode;

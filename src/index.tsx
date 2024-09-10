@@ -5,8 +5,8 @@ import './font-size.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import "../src/i18n/i18n";
-import { store } from '../src/redux/store/store';
+import "./i18n/i18n";
+import { store } from './redux/store/store';
 import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(

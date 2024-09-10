@@ -5,8 +5,8 @@
       "type": "public"
     },
     {
-      "path": "/login",
-      "component": "Login",
+      "path": "/auth",
+      "component": "Auth",
       "type": "public"
     },
     {

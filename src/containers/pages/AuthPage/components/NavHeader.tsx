@@ -1,10 +1,10 @@
 import React from 'react'
 import Nav from 'react-bootstrap/Nav';
-import { useChangeLanguage } from '@hooks/useChangeLanguage';
-import { locales } from '@i18n/i18n';
-import ThemeToggle from '@components/ThemeToggle';
+import { useChangeLanguage } from '../../../../hooks/useChangeLanguage';
+import { locales } from '../../../../i18n/i18n';
+import ThemeToggle from '../../../../components/ThemeToggle';
 import { useSelector } from 'react-redux';
-import { RootState } from '@redux/store/store';
+import { RootState } from '../../../../redux/store/store';
 
 const NavHeader = () => {
   const { changeLanguage , i18n } = useChangeLanguage();

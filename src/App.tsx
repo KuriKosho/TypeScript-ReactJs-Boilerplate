@@ -1,12 +1,13 @@
 import React, { useEffect, useState, lazy } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import PrivateRoute from '@components/PrivateRoute';
-import PublicRoute from '@components/PublicRoute';
-import fake_route from '@api/FAKE_DATA.json'
-const HomePage = lazy(() => import('@containers/pages/HomePage'));
-const LoginPage = lazy(() => import('@containers/pages/LoginPage'));
-const LoadingPage = lazy(() => import('@containers/pages/LoadingPage'));
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
+import fake_route from './api/FAKE_DATA.json'
+const HomePage = lazy(() => import('./containers/pages/HomePage'));
+const AuthPage = lazy(() => import('./containers/pages/AuthPage'));
+const LoadingPage = lazy(() => import('./containers/pages/LoadingPage'));
+
 // Define a route type for better type safety
 type RouteType = {
   path: string;
@@ -17,10 +18,9 @@ type RouteType = {
 function App() {
   const [routes, setRoutes] = useState<RouteType[]>([]);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  // useContext(ThemeContext);
   useEffect(() => {
     // Fetch routes from server
-    // setRoutes(fake_route);
+    setRoutes(fake_route);
     // axiosInstance.get('/api/routes')
       // .then(response => setRoutes(response.data.routes))
       // .catch(error => console.error('Error fetching routes:', error));
@@ -31,10 +31,8 @@ function App() {
   const mapComponent = (componentName: string) => {
     switch(componentName) {
       case 'Home': return <HomePage />;
-      case 'Login': return <LoginPage />;
-      // case 'Dashboard': return <Dashboard />;
-      // case 'Profile': return <Profile />;
-      default: return <LoginPage />;
+      case 'Auth': return <AuthPage />;
+      default: return <AuthPage />;
     }
   };
 

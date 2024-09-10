@@ -2,10 +2,10 @@ import React from "react";
 import { createRoot } from 'react-dom/client';
 import i18n from "i18next";
 import { useTranslation, initReactI18next } from "react-i18next";
-import auth_vn from "@locales/vn/auth.json"
-import auth_en from "@locales/en/auth.json"
-import copyright_vn from "@locales/vn/copyright.json"
-import copyrigh_en from "@locales/en/copyright.json"
+import auth_vn from "../locales/vn/auth.json"
+import auth_en from "../locales/en/auth.json"
+import copyright_vn from "../locales/vn/copyright.json"
+import copyrigh_en from "../locales/en/copyright.json"
 export const locales = {
     'en': 'English',
     'vi': 'Vietnamese',

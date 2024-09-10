@@ -15,28 +15,34 @@
 }
 .card_light {
     width: 350px;
-    height: 500px;
+    height: fit-content;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: #ffffff;
     color: black;
+    padding: 20px 0 15px 0;
 }
 .card_dark {
     width: 350px;
-    height: 500px;
+    height: fit-content;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: rgb(32, 32, 32);
     color: white;
+    padding: 20px 0 15px 0;
 }
-.logo {
-    padding: 7% 0 7% 0;
+.logoImage {
+    width: 100px;
+    height: 100px;
 }
 .form {
     flex: 1 1 0%;
     display: flex;
     flex-direction: column;
     justify-content: start;
-    row-gap: 7%;
-    margin-top: 7%;
+    row-gap: 20px;
+}
+.form p {
+    margin: 0;
+    padding: 0;
 }

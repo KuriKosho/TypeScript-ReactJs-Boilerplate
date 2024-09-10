@@ -62,3 +62,40 @@
   background-color: #282c34;
   color: white;
 }
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.form-btn {
+  display: flex !important;
+  flex-direction: row;
+  color: white;
+  border: none;
+  position: relative;
+}
+.form-btn button {
+  border: none;
+  background-color: #00000000 !important;
+  border-left: 1px solid #dee2e6;
+  cursor: pointer;
+  position: absolute;
+  color: #0095E9;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0  0.375rem 0.375rem 0; 
+}
+.form-btn button:hover {
+  background-color: #cdcdcd !important;
+  border-color: #dee2e6;
+  color: #0027e9;
+}
+.text-holder-white::placeholder {
+  color:  rgb(129, 129, 129) !important;
+}
+.text-holder-black::placeholder {
+  color: rgb(84, 84, 84) !important;
+}
+.pe-65 {
+  padding-right: 65px !important;
+}

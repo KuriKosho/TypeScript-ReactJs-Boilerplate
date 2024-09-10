@@ -1,5 +1,4 @@
 import React from 'react'
-
 interface TextLinkProps {
     text: string;
     onClick?: () => void;
@@ -8,7 +7,7 @@ interface TextLinkProps {
 
 const TextLink = (props:TextLinkProps) => {
   return (
-    <span onClick={props.onClick} className={`${props.className}`}>
+    <span onClick={props.onClick} className={`${props.className} text-link-hover`}>
     {props.text}
   </span>
   )
