@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
 
-const PublicRoute: React.FC = () => {
-  return <Outlet />;
+interface PublicRouteProps {
+  isAuthenticated: boolean;
+  children: ReactNode;
+}
+const PublicRoute: React.FC<PublicRouteProps> = ({isAuthenticated,children}) => {
+  return <>{children}</>;
 };
 
 export default PublicRoute;

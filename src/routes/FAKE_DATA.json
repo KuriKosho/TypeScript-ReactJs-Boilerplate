@@ -1,0 +1,39 @@
+[
+    {
+      "path": "/home",
+      "component": "Home",
+      "type": "public",
+      "layout": "default"
+    },
+    {
+      "path": "/auth",
+      "component": "Auth",
+      "type": "public"
+    },
+    {
+      "path": "/dashboard",
+      "component": "Dashboard",
+      "type": "private",
+      "layout": "default"
+
+    },
+    {
+      "path": "/profile",
+      "component": "Profile",
+      "type": "private",
+      "layout": "default"
+    },
+    {
+      "path": "/chat",
+      "component": "Chat",
+      "type": "public",
+      "layout": "default"
+    },
+    {
+      "path": "not-found",
+      "component": "NotFound",
+      "type": "public",
+      "layout": "default"
+    }
+  ]
+

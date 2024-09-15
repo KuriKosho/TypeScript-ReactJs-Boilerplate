@@ -20,7 +20,7 @@ const AuthCard = () => {
   const theme = useSelector((state: RootState) => state.theme.theme);
   const { t } = useTranslation(['auth','copyright']);
   // Variables to handle form data
-  const [email, setEmail] = useState('vvthong@gmail.com');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [code, setCode] = useState('');

@@ -1,67 +1,64 @@
-import React, { useEffect, useState, lazy } from 'react';
+import React, { useEffect, useState, lazy, Fragment } from 'react';
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+// import { Route, Routes, redirect } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
-import fake_route from './api/FAKE_DATA.json'
-const HomePage = lazy(() => import('./containers/pages/HomePage'));
-const AuthPage = lazy(() => import('./containers/pages/AuthPage'));
-const LoadingPage = lazy(() => import('./containers/pages/LoadingPage'));
-
+import fake_route from './routes/FAKE_DATA.json';
+import useRoutesConfig from './hooks/useRoutesConfig'; 
+import { DefaultLayout } from './containers/layouts';
+const LoadingPage = lazy(() => import('./containers/pages/Loading'));
+const NotFoundPage = lazy(() => import('./containers/pages/NotFound'));
 // Define a route type for better type safety
-type RouteType = {
+export interface RouteType {
   path: string;
   component: string;
-  type: 'private' | 'public' | string;
+  type: string;
+  layout?: string | null;
 }
 
 function App() {
-  const [routes, setRoutes] = useState<RouteType[]>([]);
+  const [serverData, setServerData] = useState<RouteType[]>([]);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const location = useLocation();
+  const navigate = useNavigate();
   useEffect(() => {
-    // Fetch routes from server
-    setRoutes(fake_route);
+    setServerData(fake_route);
     // axiosInstance.get('/api/routes')
       // .then(response => setRoutes(response.data.routes))
       // .catch(error => console.error('Error fetching routes:', error));
   }, []);
-  useEffect(() => {
-    console.log(fake_route);
-  }, [routes]);
-  const mapComponent = (componentName: string) => {
-    switch(componentName) {
-      case 'Home': return <HomePage />;
-      case 'Auth': return <AuthPage />;
-      default: return <AuthPage />;
-    }
-  };
-
+  const routes = useRoutesConfig(serverData);
+  
   return (
-    <div className='App'>
-      {routes ? <Routes>
+    <div className="App">
+    {serverData.length > 0 ? (
+      <Routes>
         {routes.map((route, index) => {
-            const element = mapComponent(route.component);
-            if (!element) return null;
-            return route.type === 'private' ? (
-              <Route
-                key={index}
-                path={route.path}
-                element={<PrivateRoute isAuthenticated={isAuthenticated} />}
-              >
-                <Route path={route.path} element={element} />
-              </Route>
-            ) : (
-              <Route
-                key={index}
-                path={route.path}
-                element={<PublicRoute />}
-              >
-                <Route path={route.path} element={element} />
-              </Route>
-            );
-          })}
-      </Routes> : <LoadingPage />}
-      </div>
+          const { path, component: Component, type, layout:Layout } = route;
+          const RouteWrapper = type === 'private' ? PrivateRoute : PublicRoute;
+          const LayoutComponent = Layout || Fragment;
+          return (
+            <Route
+              key={index}
+              path={path}
+              element={
+                <RouteWrapper isAuthenticated={isAuthenticated}>
+                  <LayoutComponent>
+                    <Component />
+                  </LayoutComponent>
+                </RouteWrapper>
+                }
+            />
+          );
+        })}
+        <Route path="/not-found" element={<NotFoundPage />} />
+        <Route path="*" element={<Navigate to="/not-found" />} />
+      </Routes>
+    ) : (
+      <LoadingPage />
+    )}
+  </div>
   );
 }
 

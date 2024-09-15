@@ -1,12 +1,11 @@
-// rafce
 import React from 'react'
 
-const nav = () => {
+const ChatPage = () => {
   return (
     <div>
-      
+      Chatting
     </div>
   )
 }
 
-export default nav
+export default ChatPage
